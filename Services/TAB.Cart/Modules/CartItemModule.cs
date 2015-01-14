@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Nancy;
+using TAB.Cart.Models;
 
 namespace TAB.Cart.Modules
 {
@@ -22,7 +23,7 @@ namespace TAB.Cart.Modules
 
 		private object GetItemById(int cartId, int id)
 		{
-			return cartId + " | " + id;
+			return new Product() { Id = id, Name = "Hello" };
 		}
 	}
 }
