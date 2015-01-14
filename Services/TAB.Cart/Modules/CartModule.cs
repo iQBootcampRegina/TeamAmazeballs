@@ -8,26 +8,31 @@ namespace TAB.Cart.Modules
 {
 	public class CartModule : NancyModule
 	{
-	    public CartModule() : base("/Carts")
+	    private ICartRepository _cartRepository;
+
+
+	    public CartModule(ICartRepository cartRepository) : base("/Carts")
 	    {
-            Post["/"] = x => CreateCart();
+	        _cartRepository = cartRepository;
+	        Post["/"] = x => CreateCart();
             Get["/{cartId}"] = x => GetCart(x.cartId);
             Delete["/{cartId}"] = x => DeleteCart(x.cartId);
 	    }
 
 	    private object DeleteCart(int cartId)
 	    {
-	        throw new NotImplementedException();
+            _cartRepository.Delete(cartId);
+	        return HttpStatusCode.NoContent;
 	    }
 
 	    private object GetCart(int cartId)
 	    {
-	        return "Got cart #" + cartId.ToString();
+	        return _cartRepository.Get(cartId);
 	    }
 
 	    private object CreateCart()
 	    {
-	        throw new NotImplementedException();
+	        return _cartRepository.Create();
 	    }
 	}
 }
