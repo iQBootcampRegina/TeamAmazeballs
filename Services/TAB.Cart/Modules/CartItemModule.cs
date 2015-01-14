@@ -9,9 +9,13 @@ namespace TAB.Cart.Modules
 {
 	public class CartItemModule : NancyModule
 	{
-		public CartItemModule()
+		public ICartRepository CartRepository { get; private set; }
+
+		public CartItemModule(ICartRepository cartRepository)
 			: base("/Carts/{CartId}")
 		{
+			CartRepository = cartRepository;
+
 			Get["/Items"] = x => GetItemsByCartId(x.CartId);
 			Get["/Items/{Id}"] = x => GetItemById(x.CartId, x.Id);
 		}
@@ -23,7 +27,7 @@ namespace TAB.Cart.Modules
 
 		private object GetItemById(int cartId, int id)
 		{
-			return new Product() { Id = id, Name = "Hello" };
+			return CartRepository.ToString();
 		}
 	}
 }
