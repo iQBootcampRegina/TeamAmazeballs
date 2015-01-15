@@ -30,7 +30,10 @@ namespace TAB.Order.Webjob
             if(!_orders.Any(x => x.Id == status.Id))
                 throw new ArgumentException("Order not found.");
 
-            _orders.First(x => x.Id == status.Id).OrderStatus = OrderStatus.Shipped;
+            var order = _orders.First(x => x.Id == status.Id);
+            order.OrderStatus = OrderStatus.Shipped;
+
+            return order;
         }
     }
 }
