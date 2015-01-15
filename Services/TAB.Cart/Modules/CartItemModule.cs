@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using Nancy;
 using Nancy.ModelBinding;
-using TAB.Cart.Models;
 using TAB.Cart.Services;
+using TAB.Models.Product;
 
 namespace TAB.Cart.Modules
 {

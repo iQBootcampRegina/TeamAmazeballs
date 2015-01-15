@@ -76,8 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICartRepository.cs" />
-    <Compile Include="Models\Cart.cs" />
-    <Compile Include="Models\Product.cs" />
     <Compile Include="Modules\CartItemModule.cs" />
     <Compile Include="Modules\CartModule.cs" />
     <Compile Include="NancyBootstrapper.cs" />
@@ -92,6 +90,15 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TAB.Models\TAB.Models.csproj">
+      <Project>{2738c535-4161-4725-8e47-213c254ca79e}</Project>
+      <Name>TAB.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -7,36 +7,36 @@ namespace TAB.Cart
 {
     public interface ICartRepository
     {
-        Models.Cart Create();
-        Models.Cart Get(int id);
-        Models.Cart Update(Models.Cart cart);
+        Models.Cart.Cart Create();
+        Models.Cart.Cart Get(int id);
+        Models.Cart.Cart Update(Models.Cart.Cart cart);
         void Delete(int id);
     }
 
     class FakeCartRepository : ICartRepository
     {
-        private IDictionary<int, Models.Cart> _carts; 
+        private IDictionary<int, Models.Cart.Cart> _carts; 
         private Fixture _fixture;
 
         public FakeCartRepository()
         {
-            _carts = new Dictionary<int, Models.Cart>();
+            _carts = new Dictionary<int, Models.Cart.Cart>();
             _fixture = new Fixture();
         }
-        public Models.Cart Create()
+        public Models.Cart.Cart Create()
         {
-            var cart = _fixture.Build<Models.Cart>().With(c => c.Items, new List<Product>()).Create();
+            var cart = _fixture.Create<Models.Cart.Cart>();
 
             _carts.Add(cart.Id, cart);
             return cart;
         }
 
-        public Models.Cart Get(int id)
+        public Models.Cart.Cart Get(int id)
         {
             return _carts.FirstOrDefault(x => x.Key == id).Value;
         }
 
-        public Models.Cart Update(Models.Cart cart)
+        public Models.Cart.Cart Update(Models.Cart.Cart cart)
         {
             if (_carts.Any(x => x.Key == cart.Id))
                 _carts[cart.Id] = cart;
