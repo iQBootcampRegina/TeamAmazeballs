@@ -59,7 +59,7 @@ namespace TAB.WarehouseDevice.Modules
 				return HttpStatusCode.BadRequest;
 
 			var subOrder = OrderRepository.GetSubOrderById(subOrderId);
-			if (subOrder == null || newSubOrder.OrderId != subOrderId)
+			if (subOrder == null || newSubOrder.Id != subOrderId)
 				return HttpStatusCode.BadRequest;
 
 			if (subOrder.Shipped || (!newSubOrder.Shipped && newSubOrder.Claimed && subOrder.Claimed))
