@@ -20,7 +20,7 @@ namespace TAB.WarehouseDevice
 
 		public override string ServiceIdentifier
 		{
-			get { return "tab.order.commands.warehouse"; }
+			get { return "tab.ordercommandswarehouse"; }
 		}
 	}
 }
