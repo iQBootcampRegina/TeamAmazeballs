@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Nancy;
 using Nancy.ModelBinding;
+using TAB.Models.Order;
 using TAB.WarehouseDevice.Models;
 using TAB.WarehouseDevice.Services;
 
@@ -13,11 +14,14 @@ namespace TAB.WarehouseDevice.Modules
 	{
 		public IWarehouseService WarehouseService { get; private set; }
 		public IOrderRepository OrderRepository { get; private set; }
+		public IOrderStatusUpdatePublisher UpdatePublisher { get; private set; }
 		
-		public SubOrderModule(IWarehouseService warehouseService, IOrderRepository orderRepository)
+		public SubOrderModule(IWarehouseService warehouseService, IOrderRepository orderRepository, IOrderStatusUpdatePublisher updatePublisher)
 			: base("Warehouses/{WarehouseId}")
 		{
 			WarehouseService = warehouseService;
+			OrderRepository = orderRepository;
+			UpdatePublisher = updatePublisher;
 
 			Get["/SubOrders"] = x => GetAllSubOrders(x.WarehouseId);
 			Get["/SubOrders/{Id}"] = x => GetSubOrderById(x.WarehouseId, x.Id);
@@ -70,6 +74,8 @@ namespace TAB.WarehouseDevice.Modules
 			existingSubOrder.Shipped = newSubOrder.Shipped;
 
 			OrderRepository.UpdateOrder(order);
+
+			UpdatePublisher.Publish(new OrderStatusUpdate() { Id = order.Id, Shipped = true });
 
 			return HttpStatusCode.NoContent;
 		}

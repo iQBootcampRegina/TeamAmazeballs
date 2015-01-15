@@ -15,6 +15,7 @@ namespace TAB.WarehouseDevice
 			container.Register<IWarehouseService>(new FakeWarehouseService());
 			container.Register<IInventoryService>(new FakeInventoryService());
 			container.Register<IOrderRepository>(new FakeOrderRepository());
+			container.Register<IOrderStatusUpdatePublisher>(new OrderStatusUpdatePublisher());
 			base.ConfigureApplicationContainer(container);
 		}
 

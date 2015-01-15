@@ -10,12 +10,12 @@ namespace TAB.WarehouseDevice
 	{
 		public override string ConnectionString
 		{
-			get { return "Endpoint=sb://iq-test.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=SsMHVTRxt6st4C7nZLLMYk9wWIn7n4rvudXDWBHQdXo="; }
+			get { return "Endpoint=sb://iq-azgddlocal.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=+kXqZEalbQwKlsUq9B9NzA2TYX2JUorpOXSOAZIsGAc="; }
 		}
 
 		public override string ServiceIdentifier
 		{
-			get { return "IQ.SampleQueueProducer"; }
+			get { return "tab.order.commands.warehouse"; }
 		}
 	}
 }

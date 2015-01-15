@@ -95,6 +95,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IOrderStatusUpdatePublisher.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Modules\OrdersModule.cs" />
     <Compile Include="Modules\WarehouseModule.cs" />

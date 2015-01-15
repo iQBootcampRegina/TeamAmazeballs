@@ -13,11 +13,20 @@ namespace TAB.WarehouseDevice
 		SubOrder GetSubOrderById(int subOrderId);
 		void AddOrder(Order order);
 		void UpdateOrder(Order order);
+		int GetNextSubOrderId();
 	}
 
 	public class FakeOrderRepository : IOrderRepository
 	{
 		private IList<Order> _orders;
+
+		private object _subIdLock = new object();
+		private int _nextSubOrderId = 1;
+		public int GetNextSubOrderId()
+		{
+			lock (_subIdLock)
+				return _nextSubOrderId++;
+		}
 
 		public FakeOrderRepository()
 		{
@@ -54,7 +63,7 @@ namespace TAB.WarehouseDevice
 										Id = i.Id, 
 										Name = i.Name,
 										Quantity = i.Quantity,
-										SKU = i.SKU
+										Sku = i.Sku
 									};
 								}).ToArray()
 						};
