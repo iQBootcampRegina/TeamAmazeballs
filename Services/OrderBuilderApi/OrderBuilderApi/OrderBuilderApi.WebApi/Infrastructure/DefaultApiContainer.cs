@@ -7,6 +7,7 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using IQ.Platform.Framework.Logging;
 using IQ.Platform.Framework.WebApi.AspNet.Handlers;
+using IQ.Platform.Framework.WebApi.DI.AspNet.Windsor.Conventions;
 using IQ.Platform.Framework.WebApi.Formatting;
 using IQ.Platform.Framework.WebApi.Handlers;
 using IQ.Platform.Framework.WebApi.Security;
@@ -46,7 +47,7 @@ namespace OrderBuilderApi.WebApi.Infrastructure
 
         protected override void RegisterCustomDependencies()
         {
-
+            _windsorContainer.Kernel.Resolver.AddSubResolver(new AppSettingsConvention());
             _windsorContainer
                 .Install(new IWindsorInstaller[]
 				         {
@@ -58,6 +59,7 @@ namespace OrderBuilderApi.WebApi.Infrastructure
 							 new SecurityMessageHandlersInstaller(Assembly.GetExecutingAssembly()),
 				         })
                          .InstallLogging();
+            _windsorContainer.Register(Component.For<ICartService>().ImplementedBy<CartService>());
 
             //_windsorContainer.Register(Component.For<IApiUserFactory<ApiUser<UserAuthData>>>().ImplementedBy<DefaultApiUserFactory<UserAuthData>>());
             _windsorContainer.Register(Component.For<IRequestAuthenticator<UserAuthData>>().ImplementedBy<DefaultSsoBasedRequestAuthenticator>());
