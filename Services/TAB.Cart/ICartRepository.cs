@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Ploeh.AutoFixture;
+using TAB.Cart.Models;
 
 namespace TAB.Cart
 {
@@ -24,7 +25,7 @@ namespace TAB.Cart
         }
         public Models.Cart Create()
         {
-            var cart = _fixture.Create<Models.Cart>();
+            var cart = _fixture.Build<Models.Cart>().With(c => c.Items, new List<Product>()).Create();
 
             _carts.Add(cart.Id, cart);
             return cart;

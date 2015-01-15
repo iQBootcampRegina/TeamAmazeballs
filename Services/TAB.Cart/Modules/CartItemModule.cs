@@ -24,7 +24,7 @@ namespace TAB.Cart.Modules
 			Post["/Items"] = x => CreateItemInCart(x.CartId);
 			Get["/Items/{Id}"] = x => GetItemById(x.CartId, x.Id);
 			Put["/Items/{Id}"] = x => UpdateItemById(x.CartId, x.Id);
-			Delete["/Items/{Id}"] = x => DeleteItemById(x.CardId, x.Id);
+			Delete["/Items/{Id}"] = x => DeleteItemById(x.CartId, x.Id);
 		}
 
 		private object GetItemsByCartId(int cartId)
@@ -45,8 +45,14 @@ namespace TAB.Cart.Modules
 			var product = this.Bind<Product>();
 			if (cart.Items.Any(i => i.Id == product.Id))
 				return HttpStatusCode.BadRequest;
-			cart.Items.Add(product);
-			return Negotiate.WithModel(product).WithStatusCode(HttpStatusCode.Created);
+			var newProduct = ProductService.GetProductById(product.Id);
+			if (newProduct == null)
+				return HttpStatusCode.BadRequest;
+
+			newProduct.Quantity = product.Quantity;
+			cart.Items.Add(newProduct);
+
+			return Negotiate.WithModel(newProduct).WithStatusCode(HttpStatusCode.Created);
 		}
 
 		private object GetItemById(int cartId, int id)
@@ -70,12 +76,12 @@ namespace TAB.Cart.Modules
 
 			var product = this.Bind<Product>();
 			var existing = cart.Items.FirstOrDefault(i => i.Id == id);
-			if (product == null || existing == null)
+			if (product == null || existing == null || product.Id != id)
 				return HttpStatusCode.BadRequest;
 
 			existing.Quantity = product.Quantity;
 
-			return product;
+			return existing;
 		}
 
 		private object DeleteItemById(int cartId, int id)
