@@ -12,12 +12,14 @@ namespace TAB.WarehouseDevice.Modules
 	public class OrdersModule : NancyModule
 	{
 		public IInventoryService InventoryService { get; private set; }
+		public IWarehouseService WarehouseService { get; private set; }
 		public IOrderRepository OrderRepository { get; private set; }
 
-		public OrdersModule(IInventoryService inventoryService, IOrderRepository orderRepository)
+		public OrdersModule(IInventoryService inventoryService, IWarehouseService warehouseService, IOrderRepository orderRepository)
 			: base("Orders")
 		{
 			InventoryService = inventoryService;
+			WarehouseService = warehouseService;
 			OrderRepository = orderRepository;
 
 			Post["/"] = x => AddOrder();
@@ -29,13 +31,9 @@ namespace TAB.WarehouseDevice.Modules
 			if (order == null || order.Id < 1)
 				return HttpStatusCode.BadRequest;
 
-			Dictionary<int, int> perWarehouseCount = new Dictionary<int, int>();
+			Dictionary<int, int> perWarehouseCount = WarehouseService.GetAllWarehouses().ToDictionary(w => w.Id, w => 0);
 			foreach (var subOrder in OrderRepository.GetAllOrders().SelectMany(o => o.SubOrders))
-			{
-				if (!perWarehouseCount.ContainsKey(subOrder.WarehouseId))
-					perWarehouseCount.Add(subOrder.WarehouseId, 0);
 				++perWarehouseCount[subOrder.WarehouseId];
-			}
 
 			var warehouseIds = perWarehouseCount.OrderBy(kvp => kvp.Value).Select(kvp => kvp.Key).ToArray();
 
