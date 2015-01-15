@@ -22,15 +22,27 @@ namespace TAB.Cart.Services
 
         public Product GetProductById(int id)
         {
-            return _products.FirstOrDefault(x => x.Id == id);
+            var product = _products.FirstOrDefault(x => x.Id == id);
+			if (product == null)
+				return null;
+			return new Product()
+			{
+				Id = product.Id,
+				Name = product.Name,
+				Description = product.Description,
+				Price = product.Price,
+				Sku = product.Sku, 
+				Quantity = 0
+			};
         }
 
 
         private void PopulateProducts()
         {
             var fixture = new Fixture();
-
             fixture.AddManyTo(_products, 100);
+			for (int i = 0; i < _products.Count; ++i)
+				_products[i].Id = i + 1;
         }
     }
 }
