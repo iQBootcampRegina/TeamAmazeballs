@@ -8,7 +8,7 @@ using IQ.Platform.Framework.WebApi.Model.Hypermedia;
 
 namespace OrderBuilderApi.Model
 {
-	public class Address : IStatelessResource
+	public class Address 
     {
         public string Address1 { get; set; }
         public string Address2 { get; set; }

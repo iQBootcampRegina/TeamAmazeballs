@@ -15,7 +15,7 @@ namespace OrderBuilderApi.ApiServices
     {
         private readonly ICartService _cartService;
 
-        public CartApiService(ICartService cartService)
+        public ApiService(ICartService cartService)
         {
             if (cartService == null) throw new ArgumentNullException("cartService");
             _cartService = cartService;

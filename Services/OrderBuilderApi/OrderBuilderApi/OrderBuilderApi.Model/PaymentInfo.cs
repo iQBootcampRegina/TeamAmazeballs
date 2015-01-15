@@ -8,7 +8,7 @@ using IQ.Platform.Framework.WebApi.Model.Hypermedia;
 
 namespace OrderBuilderApi.Model
 {
-	public class PaymentInfo : IStatelessResource
+	public class PaymentInfo 
 	{
         public decimal Subtotal { get; set; }
         public decimal Total { get; set; }

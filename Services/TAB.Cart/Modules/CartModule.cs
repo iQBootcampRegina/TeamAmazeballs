@@ -32,7 +32,7 @@ namespace TAB.Cart.Modules
 
 	    private object CreateCart()
 	    {
-	        return _cartRepository.Create();
+            return Negotiate.WithModel(_cartRepository.Create()).WithStatusCode(HttpStatusCode.Created);
 	    }
 	}
 }

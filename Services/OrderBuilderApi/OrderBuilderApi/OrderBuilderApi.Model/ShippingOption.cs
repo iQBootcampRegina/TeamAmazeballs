@@ -8,7 +8,7 @@ using IQ.Platform.Framework.WebApi.Model.Hypermedia;
 
 namespace OrderBuilderApi.Model
 {
-	public class ShippingOption : IStatelessResource
+	public class ShippingOption 
     {
         public int Id { get; set; }
 	}

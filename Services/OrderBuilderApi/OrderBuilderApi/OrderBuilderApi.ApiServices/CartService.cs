@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -42,9 +43,11 @@ namespace OrderBuilderApi.ApiServices
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(_cartServiceBaseUri);
-                var response = client.PostAsync("Carts", new HttpMessageContent(new HttpRequestMessage())).Result;
 
-                if (response.StatusCode != HttpStatusCode.OK)
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = client.PostAsync("Carts", new StringContent("", Encoding.UTF8, "application/json")).Result; 
+
+                if (response.StatusCode != HttpStatusCode.Created)
                     throw new HttpException("Error creating cart");
 
                 using (var res = response.Content.ReadAsStringAsync())
@@ -64,12 +67,43 @@ namespace OrderBuilderApi.ApiServices
 
         public Cart GetCart(int id)
         {
-            throw new NotImplementedException();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(_cartServiceBaseUri);
+
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = client.GetAsync("Carts", CancellationToken.None).Result;
+
+                if (response.StatusCode != HttpStatusCode.OK)
+                    throw new HttpException("Error getting cart");
+
+                using (var res = response.Content.ReadAsStringAsync())
+                {
+                    var json = res.Result;
+                    try
+                    {
+                        return JsonConvert.DeserializeObject<Cart>(json);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new HttpException(string.Format("Error deserializing the response from the order api: {0} Response: {1}", ex.Message, response));
+                    }
+                }
+            }
         }
 
         public void DeleteCart(int id)
         {
-            throw new NotImplementedException();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(_cartServiceBaseUri);
+
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = client.DeleteAsync("Carts", CancellationToken.None).Result;
+
+                if (response.StatusCode != HttpStatusCode.NoContent)
+                    throw new HttpException("Error deleting cart");
+            }
         }
 
         public List<Item> GetItems(int cartId)
