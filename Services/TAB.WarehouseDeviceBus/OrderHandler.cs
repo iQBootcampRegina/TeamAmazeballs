@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Text;
 using System.Threading.Tasks;
 using IQ.Foundation.Messaging.MessageHandling;
@@ -13,8 +14,9 @@ namespace TAB.WarehouseDeviceBus
 	{
 		public override void Handle(Order message)
 		{
-			HttpClient client = new HttpClient();
-			var request = new HttpRequestMessage(HttpMethod.Post, "http://localhost:57483/Orders");
+			var task = new HttpClient().PostAsJsonAsync("http://localhost:57483/Orders", message);
+			if (!task.Wait(30000) || task.Status != TaskStatus.Created)
+				throw new Exception();
 		}
 	}
 }

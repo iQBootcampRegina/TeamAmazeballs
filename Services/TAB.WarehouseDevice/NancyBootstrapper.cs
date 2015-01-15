@@ -17,5 +17,11 @@ namespace TAB.WarehouseDevice
 			container.Register<IOrderRepository>(new FakeOrderRepository());
 			base.ConfigureApplicationContainer(container);
 		}
+
+		protected override void ApplicationStartup(TinyIoCContainer container, Nancy.Bootstrapper.IPipelines pipelines)
+		{
+
+			base.ApplicationStartup(container, pipelines);
+		}
 	}
 }

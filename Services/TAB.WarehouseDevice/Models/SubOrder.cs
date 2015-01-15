@@ -11,6 +11,7 @@ namespace TAB.WarehouseDevice.Models
 		public int OrderId { get; set; }
 		public int WarehouseId { get; set; }
 		public Product[] Items { get; set; }
+		public bool Claimed { get; set; }
 		public bool Shipped { get; set; }
 	}
 }

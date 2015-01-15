@@ -10,7 +10,9 @@ namespace TAB.WarehouseDevice
 	{
 		IEnumerable<Order> GetAllOrders();
 		Order GetOrderById(int id);
+		SubOrder GetSubOrderById(int subOrderId);
 		void AddOrder(Order order);
+		void UpdateOrder(Order order);
 	}
 
 	public class FakeOrderRepository : IOrderRepository
@@ -42,6 +44,7 @@ namespace TAB.WarehouseDevice
 						{
 							Id = o.Id,
 							OrderId = o.OrderId,
+							Claimed = o.Claimed,
 							Shipped = o.Shipped,
 							WarehouseId = o.WarehouseId,
 							Items = o.Items.Select(i =>
@@ -61,7 +64,29 @@ namespace TAB.WarehouseDevice
 
 		public void AddOrder(Order order)
 		{
-			throw new NotImplementedException();
+			if (_orders.Any(o => o.Id == order.Id))
+				throw new Exception("Order already added.");
+			_orders.Add(order);
+		}
+
+
+		public void UpdateOrder(Order order)
+		{
+			for (int i = 0; i < _orders.Count; ++i)
+			{
+				if (_orders[i].Id == order.Id)
+				{
+					_orders[i] = order;
+					return;
+				}
+			}
+			throw new Exception("Order not found.");
+		}
+
+
+		public SubOrder GetSubOrderById(int subOrderId)
+		{
+			return _orders.SelectMany(o => o.SubOrders).FirstOrDefault(s => s.Id == subOrderId);
 		}
 	}
 }

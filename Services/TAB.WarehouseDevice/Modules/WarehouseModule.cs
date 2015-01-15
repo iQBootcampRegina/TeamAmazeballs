@@ -20,12 +20,12 @@ namespace TAB.WarehouseDevice.Modules
 			Get["/{Id}"] = x => GetWarehouseById(x.Id);
 		}
 
-		public object GetAllWarehouses()
+		private object GetAllWarehouses()
 		{
 			return WarehouseService.GetAllWarehouses();
 		}
 
-		public object GetWarehouseById(int id)
+		private object GetWarehouseById(int id)
 		{
 			var warehouse = WarehouseService.GetWarehouseById(id);
 			if (warehouse == null)

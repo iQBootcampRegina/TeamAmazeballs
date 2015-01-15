@@ -21,7 +21,7 @@ namespace TAB.WarehouseDevice.Modules
 			Post["/"] = x => AddOrder();
 		}
 
-		public object AddOrder()
+		private object AddOrder()
 		{
 			var order = this.Bind<Order>();
 			if (order == null || order.Id < 1)
