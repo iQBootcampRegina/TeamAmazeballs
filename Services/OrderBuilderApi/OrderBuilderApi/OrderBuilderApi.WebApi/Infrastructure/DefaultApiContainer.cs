@@ -29,7 +29,7 @@ namespace OrderBuilderApi.WebApi.Infrastructure
 
         readonly IDomainServiceResolver _domainServiceResolver;
         readonly Assembly _apiDomainServicesAssembly = typeof(ISampleApiService).Assembly;
-        readonly Assembly _resourceMappersAssembly = typeof(SampleApiService).Assembly;
+        readonly Assembly _resourceMappersAssembly = typeof(CartApiService).Assembly;
 
 
         public DefaultApiContainer(HttpConfiguration configuration, IWindsorContainer windsorContainer, IDomainServiceResolver domainServiceResolver = null)
@@ -39,9 +39,9 @@ namespace OrderBuilderApi.WebApi.Infrastructure
         }
 
         public override Assembly ResourceAssembly { get { return typeof(LinkRelations).Assembly; } }
-        protected override Assembly ResourceSpecsAssembly { get { return typeof(SampleSpec).Assembly; } }
-        protected override Assembly ResourceStateProvidersAssembly { get { return typeof(SampleResource).Assembly; } }
-        protected override Assembly ApiAppServicesAssembly { get { return typeof(SampleApiService).Assembly; } }
+        protected override Assembly ResourceSpecsAssembly { get { return typeof(CartSpec).Assembly; } }
+        protected override Assembly ResourceStateProvidersAssembly { get { return typeof(CartSpec).Assembly; } }
+        protected override Assembly ApiAppServicesAssembly { get { return typeof(CartApiService).Assembly; } }
 
 
         protected override void RegisterCustomDependencies()

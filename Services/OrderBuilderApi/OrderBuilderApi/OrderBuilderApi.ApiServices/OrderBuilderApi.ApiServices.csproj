@@ -175,7 +175,7 @@
     <Compile Include="Security\ApiClient.cs" />
     <Compile Include="Security\AuthenticationFailedException.cs" />
     <Compile Include="Security\OrderBuilderApiApiUser.cs" />
-    <Compile Include="SampleApiService.cs" />
+    <Compile Include="CartApiService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OrderBuilderApi.Model\OrderBuilderApi.Model.csproj">

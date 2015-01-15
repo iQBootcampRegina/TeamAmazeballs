@@ -1,17 +1,46 @@
-﻿using OrderBuilderApi.Model;
+﻿using System.Collections.Generic;
+using OrderBuilderApi.Model;
 using IQ.Platform.Framework.WebApi.Hypermedia;
 using IQ.Platform.Framework.WebApi.Hypermedia.Specs;
 
 namespace OrderBuilderApi.WebApi.Hypermedia
 {
-    public class SampleSpec : SingleStateResourceSpec<SampleResource, string>
+    public class CartSpec : ResourceSpec<Cart, CartStatus, int>
     {
 
-        public static ResourceUriTemplate Uri = ResourceUriTemplate.Create("SampleResources({id})");
+        public static ResourceUriTemplate Uri = ResourceUriTemplate.Create("Carts({id})");
+
+        protected override IEnumerable<IResourceStateSpec<Cart, CartStatus, int>> GetStateSpecs()
+        {
+            yield return new ResourceStateSpec<Cart, CartStatus, int>(CartStatus.Created)
+                {
+                    Operations =
+                        {
+                            InitialPost = ServiceOperations.Create
+                        }
+                };
+
+            yield return new ResourceStateSpec<Cart, CartStatus, int>(CartStatus.Empty)
+            {
+                Operations =
+                {
+                    Delete = ServiceOperations.Delete
+                }
+            };
+
+
+            yield return new ResourceStateSpec<Cart, CartStatus, int>(CartStatus.HasItems)
+            {
+                Operations =
+                {
+                    Delete = ServiceOperations.Delete
+                }
+            };
+        }
 
         public override string EntrypointRelation
         {
-            get { return LinkRelations.SampleResource; }
+            get { return LinkRelations.Cart; }
         }
 
 

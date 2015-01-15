@@ -4,11 +4,11 @@ using IQ.Platform.Framework.WebApi;
 namespace OrderBuilderApi.ApiServices
 {
     public interface ISampleApiService :
-        IGetAResourceAsync<SampleResource, string>,
-        IGetManyOfAResourceAsync<SampleResource, string>,
-        ICreateAResourceAsync<SampleResource, string>,
-        IUpdateAResourceAsync<SampleResource, string>,
-        IDeleteResourceAsync<SampleResource, string>
+        IGetAResourceAsync<Cart, int>,
+        IGetManyOfAResourceAsync<Cart, int>,
+        ICreateAResourceAsync<Cart, int>,
+        IUpdateAResourceAsync<Cart, int>,
+        IDeleteResourceAsync<Cart, int>
     {
     }
 }
