@@ -10,7 +10,7 @@ using IQ.Platform.Framework.WebApi;
 
 namespace OrderBuilderApi.ApiServices
 {
-    public class CartApiService : ISampleApiService
+    public class ApiService : IApiService<Cart, int>
     {
 
         public Task<Cart> GetAsync(int id, IRequestContext context, CancellationToken cancellation)
