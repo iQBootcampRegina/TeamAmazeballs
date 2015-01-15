@@ -21,7 +21,7 @@ namespace TAB.WarehouseDeviceBus
 
 		public override string ServiceIdentifier
 		{
-			get { return "tabordernotifications"; }
+			get { return "tab.order"; }
 		}
 	}
 }
