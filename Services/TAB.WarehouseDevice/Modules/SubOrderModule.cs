@@ -59,7 +59,7 @@ namespace TAB.WarehouseDevice.Modules
 				return HttpStatusCode.BadRequest;
 
 			var subOrder = OrderRepository.GetSubOrderById(subOrderId);
-			if (subOrder == null || newSubOrder.OrderId != subOrderId)
+			if (subOrder == null || newSubOrder.Id != subOrderId)
 				return HttpStatusCode.BadRequest;
 
 			if (subOrder.Shipped || (!newSubOrder.Shipped && newSubOrder.Claimed && subOrder.Claimed))
@@ -75,7 +75,8 @@ namespace TAB.WarehouseDevice.Modules
 
 			OrderRepository.UpdateOrder(order);
 
-			UpdatePublisher.Publish(new OrderStatusUpdate() { Id = order.Id, Shipped = true });
+			if (order.SubOrders.All(s => s.Shipped))
+				UpdatePublisher.Publish(new OrderStatusUpdate() { Id = order.Id, Shipped = true });
 
 			return HttpStatusCode.NoContent;
 		}

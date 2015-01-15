@@ -25,7 +25,7 @@ namespace TAB.WarehouseDevice
 
 		public void Publish(OrderStatusUpdate orderStatusUpdate)
 		{
-			_queuePublisher.Enqueue("tab.order.commands", orderStatusUpdate);
+			_queuePublisher.Enqueue("tab.order.queue", orderStatusUpdate);
 		}
 	}
 }

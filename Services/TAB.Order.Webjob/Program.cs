@@ -76,7 +76,6 @@ namespace TAB.Order.Webjob
             {
                 return
                     "Endpoint=sb://iqbootcamp.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=DYR29cbRrvBi1ADCztJQ99vlTOyPDVFAtLOgO8yWgN8=";
-
 //                    "Endpoint=sb://iq-azgddlocal.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=+kXqZEalbQwKlsUq9B9NzA2TYX2JUorpOXSOAZIsGAc=";
             }
         }

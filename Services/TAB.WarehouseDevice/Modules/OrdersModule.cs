@@ -56,7 +56,7 @@ namespace TAB.WarehouseDevice.Modules
 				List<TAB.Models.Product.Product> products = new List<TAB.Models.Product.Product>();
 				int currentProduct = 0;
 				int quantity = 0;
-				while (order.Products.Count > 0)
+				while (order.Products.Count > 0 && currentProduct < order.Products.Count)
 				{
 					quantity = InventoryService.GetStockById(order.Products[currentProduct].Id, warehouseId);
 					var product = order.Products[currentProduct];

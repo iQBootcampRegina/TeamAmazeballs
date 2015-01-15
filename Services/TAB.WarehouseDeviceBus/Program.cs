@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IQ.Foundation.Messaging.AzureServiceBus;
+using TAB.Models.Order;
 
 namespace TAB.WarehouseDeviceBus
 {
@@ -11,7 +12,9 @@ namespace TAB.WarehouseDeviceBus
 	{
 		static void Main(string[] args)
 		{
-			new OrderServiceBusBootstrapper(new OrderConfiguration());
+			var bootstrapper = new DefaultAzureServiceBusBootstrapper(new OrderConfiguration());
+			bootstrapper.MessageHandlerRegisterer.Register(new OrderHandler());
+			bootstrapper.Subscribe();
 		}
 	}
 }
