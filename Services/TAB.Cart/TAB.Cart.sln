@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TAB.Cart", "TAB.Cart.csproj", "{8F551BD2-27DF-4897-AD35-CE983B1B39D0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B7E67287-DE12-4F51-A51E-E523B959EEF3}"
@@ -11,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B7E672
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TAB.Models", "..\TAB.Models\TAB.Models.csproj", "{2738C535-4161-4725-8E47-213C254CA79E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TAB.WarehouseDevice", "..\TAB.WarehouseDevice\TAB.WarehouseDevice.csproj", "{6C1F3554-D839-4916-9508-16E34AA5AE94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TAB.WarehouseDeviceBus", "..\TAB.WarehouseDeviceBus\TAB.WarehouseDeviceBus.csproj", "{95D7F347-0844-4796-A8E8-FAD129FBD931}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,8 +32,19 @@ Global
 		{2738C535-4161-4725-8E47-213C254CA79E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2738C535-4161-4725-8E47-213C254CA79E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2738C535-4161-4725-8E47-213C254CA79E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C1F3554-D839-4916-9508-16E34AA5AE94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C1F3554-D839-4916-9508-16E34AA5AE94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C1F3554-D839-4916-9508-16E34AA5AE94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C1F3554-D839-4916-9508-16E34AA5AE94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95D7F347-0844-4796-A8E8-FAD129FBD931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95D7F347-0844-4796-A8E8-FAD129FBD931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95D7F347-0844-4796-A8E8-FAD129FBD931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95D7F347-0844-4796-A8E8-FAD129FBD931}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4
 	EndGlobalSection
 EndGlobal
