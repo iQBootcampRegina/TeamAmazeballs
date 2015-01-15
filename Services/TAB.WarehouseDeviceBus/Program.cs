@@ -14,7 +14,10 @@ namespace TAB.WarehouseDeviceBus
 		{
 			var bootstrapper = new DefaultAzureServiceBusBootstrapper(new OrderConfiguration());
 			bootstrapper.MessageHandlerRegisterer.Register(new OrderHandler());
+			Console.WriteLine("Subscribing...");
 			bootstrapper.Subscribe();
+			Console.WriteLine("Subscribed!");
+			Console.ReadLine();
 		}
 	}
 }

@@ -14,9 +14,17 @@ namespace TAB.WarehouseDeviceBus
 	{
 		public override void Handle(Order message)
 		{
-			var task = new HttpClient().PostAsJsonAsync("http://localhost:57483/Orders", message);
+			Console.WriteLine("Order " + message.Id + " received!");
+			var client = new HttpClient();
+			var request = new HttpRequestMessage(HttpMethod.Post, "http://localhost:57483/Orders");
+			request.Content = new ObjectContent(typeof(Order), message, new JsonMediaTypeFormatter(), "application/json");
+			var task = client.SendAsync(request);
+
+			//var task = new HttpClient().PostAsJsonAsync("http://localhost:57483/Orders", message);
 			if (!task.Wait(30000) || task.Status != TaskStatus.Created)
 				throw new Exception();
+
+			Console.WriteLine("Sent to Warehouse Device Service!");
 		}
 	}
 }

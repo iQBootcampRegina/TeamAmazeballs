@@ -11,7 +11,7 @@ namespace TAB.WarehouseDeviceBus
 	{
 		protected override IEnumerable<string> SubscriptionTopics
 		{
-			get { yield return ServiceIdentifier; }
+			get { yield return "tab.order"; }
 		}
 
 		public override string ConnectionString
@@ -21,7 +21,7 @@ namespace TAB.WarehouseDeviceBus
 
 		public override string ServiceIdentifier
 		{
-			get { return "tab.order"; }
+			get { return "tab.order.warehousedevice"; }
 		}
 	}
 }
