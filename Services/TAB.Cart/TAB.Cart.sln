@@ -10,6 +10,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B7E672
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TAB.Models", "..\TAB.Models\TAB.Models.csproj", "{2738C535-4161-4725-8E47-213C254CA79E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TAB.WarehouseDevice", "..\TAB.WarehouseDevice\TAB.WarehouseDevice.csproj", "{6C1F3554-D839-4916-9508-16E34AA5AE94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TAB.WarehouseDeviceBus", "..\TAB.WarehouseDeviceBus\TAB.WarehouseDeviceBus.csproj", "{95D7F347-0844-4796-A8E8-FAD129FBD931}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TAB.Order.Webjob", "..\TAB.Order.Webjob\TAB.Order.Webjob.csproj", "{9D29A1FF-A7A3-4160-A8F5-B9C5FCC65633}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,8 +28,27 @@ Global
 		{8F551BD2-27DF-4897-AD35-CE983B1B39D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F551BD2-27DF-4897-AD35-CE983B1B39D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F551BD2-27DF-4897-AD35-CE983B1B39D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2738C535-4161-4725-8E47-213C254CA79E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2738C535-4161-4725-8E47-213C254CA79E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2738C535-4161-4725-8E47-213C254CA79E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2738C535-4161-4725-8E47-213C254CA79E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C1F3554-D839-4916-9508-16E34AA5AE94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C1F3554-D839-4916-9508-16E34AA5AE94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C1F3554-D839-4916-9508-16E34AA5AE94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C1F3554-D839-4916-9508-16E34AA5AE94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95D7F347-0844-4796-A8E8-FAD129FBD931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95D7F347-0844-4796-A8E8-FAD129FBD931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95D7F347-0844-4796-A8E8-FAD129FBD931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95D7F347-0844-4796-A8E8-FAD129FBD931}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D29A1FF-A7A3-4160-A8F5-B9C5FCC65633}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D29A1FF-A7A3-4160-A8F5-B9C5FCC65633}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D29A1FF-A7A3-4160-A8F5-B9C5FCC65633}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D29A1FF-A7A3-4160-A8F5-B9C5FCC65633}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4
 	EndGlobalSection
 EndGlobal

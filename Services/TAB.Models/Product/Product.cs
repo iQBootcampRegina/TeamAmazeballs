@@ -1,4 +1,4 @@
-﻿namespace TAB.Cart.Models
+namespace TAB.Models.Product
 {
     public class Product
     {
