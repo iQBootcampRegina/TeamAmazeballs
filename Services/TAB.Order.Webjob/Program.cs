@@ -75,7 +75,9 @@ namespace TAB.Order.Webjob
             get
             {
                 return
-                    "Endpoint=sb://iq-azgddlocal.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=+kXqZEalbQwKlsUq9B9NzA2TYX2JUorpOXSOAZIsGAc=";
+                    "Endpoint=sb://iqbootcamp.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=DYR29cbRrvBi1ADCztJQ99vlTOyPDVFAtLOgO8yWgN8=";
+
+//                    "Endpoint=sb://iq-azgddlocal.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=+kXqZEalbQwKlsUq9B9NzA2TYX2JUorpOXSOAZIsGAc=";
             }
         }
 
@@ -97,8 +99,8 @@ namespace TAB.Order.Webjob
             get
             {
                 return
-                    "Endpoint=sb://iq-azgddlocal.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=+kXqZEalbQwKlsUq9B9NzA2TYX2JUorpOXSOAZIsGAc=";
-
+                    "Endpoint=sb://iqbootcamp.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=DYR29cbRrvBi1ADCztJQ99vlTOyPDVFAtLOgO8yWgN8=";
+//                    "Endpoint=sb://iq-azgddlocal.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=+kXqZEalbQwKlsUq9B9NzA2TYX2JUorpOXSOAZIsGAc=";
             }
         }
 

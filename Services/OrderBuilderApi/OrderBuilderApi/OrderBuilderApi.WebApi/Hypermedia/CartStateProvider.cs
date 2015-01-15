@@ -6,7 +6,7 @@ using OrderBuilderApi.Model;
 
 namespace OrderBuilderApi.WebApi.Hypermedia
 {
-    public class OrderStateProvider : ResourceStateProviderBase<Cart, CartStatus>
+    public class CartStateProvider : ResourceStateProviderBase<Cart, CartStatus>
     {
         public override CartStatus GetFor(Cart resource)
         {

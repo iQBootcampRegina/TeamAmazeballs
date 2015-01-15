@@ -16,12 +16,12 @@ namespace TAB.WarehouseDeviceBus
 
 		public override string ConnectionString
 		{
-			get { return "Endpoint=sb://iq-azgddlocal.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=+kXqZEalbQwKlsUq9B9NzA2TYX2JUorpOXSOAZIsGAc="; }
+            get { return "Endpoint=sb://iqbootcamp.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=DYR29cbRrvBi1ADCztJQ99vlTOyPDVFAtLOgO8yWgN8="; }
 		}
 
 		public override string ServiceIdentifier
 		{
-			get { return "TAB.Order.Notifications"; }
+			get { return "tab.order.notifications"; }
 		}
 	}
 }

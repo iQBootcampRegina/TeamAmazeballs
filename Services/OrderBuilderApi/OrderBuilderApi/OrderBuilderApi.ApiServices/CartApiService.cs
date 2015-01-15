@@ -11,7 +11,7 @@ using IQ.Platform.Framework.WebApi;
 
 namespace OrderBuilderApi.ApiServices
 {
-    public class CartApiService : ISampleApiService
+    public class ApiService : IApiService<Cart, int>
     {
         private readonly ICartService _cartService;
 
