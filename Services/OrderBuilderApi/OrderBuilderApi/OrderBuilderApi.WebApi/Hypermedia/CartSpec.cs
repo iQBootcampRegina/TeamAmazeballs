@@ -25,7 +25,12 @@ namespace OrderBuilderApi.WebApi.Hypermedia
                 Operations =
                 {
                     Delete = ServiceOperations.Delete
-                }
+                },
+                
+                Links =
+                    {
+                        CreateLinkTemplate(LinkRelations.Cart, ItemSpec.Uri.Many, c => c.Id),
+                    }
             };
 
 
@@ -34,7 +39,12 @@ namespace OrderBuilderApi.WebApi.Hypermedia
                 Operations =
                 {
                     Delete = ServiceOperations.Delete
-                }
+                },
+
+                Links =
+                    {
+                        CreateLinkTemplate(LinkRelations.Cart, ItemSpec.Uri.Many, c => c.Id),
+                    }
             };
         }
 

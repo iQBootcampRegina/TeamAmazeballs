@@ -1,4 +1,5 @@
-﻿using IQ.Platform.Framework.Common;
+﻿using System.Collections.Generic;
+using IQ.Platform.Framework.Common;
 using IQ.Platform.Framework.WebApi.Model.Hypermedia;
 
 namespace OrderBuilderApi.Model
@@ -8,10 +9,17 @@ namespace OrderBuilderApi.Model
     /// </summary>
     public class Cart : IStatefulResource<CartStatus>, IIdentifiable<int>
     {
+        public Cart()
+        {
+            Items = new List<Item>();
+        }
+
         /// <summary>
         /// Unique Identifier for the cart
         /// </summary>
         public int Id { get; set; }
+
+        public List<Item> Items { get; set; }
 
         /// <summary>
         /// The current status of the cart. Ex: Empty, HasItems.
