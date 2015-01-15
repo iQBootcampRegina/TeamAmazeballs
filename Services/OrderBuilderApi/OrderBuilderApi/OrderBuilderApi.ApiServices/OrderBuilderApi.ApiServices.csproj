@@ -168,8 +168,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrderApiService.cs" />
     <Compile Include="IDomainServiceResolver.cs" />
-    <Compile Include="ISampleApiService.cs" />
+    <Compile Include="IApiService.cs" />
     <Compile Include="ItemApiService.cs" />
     <Compile Include="LinksParametersSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

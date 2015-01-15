@@ -60,6 +60,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CartStatus.cs" />
+    <Compile Include="Address.cs" />
+    <Compile Include="OrderStatus.cs" />
+    <Compile Include="PaymentInfo.cs" />
+    <Compile Include="ShippingOption.cs" />
+    <Compile Include="ShippingInfo.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="LinkRelations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
