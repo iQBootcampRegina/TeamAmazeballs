@@ -13,6 +13,8 @@ namespace TAB.WarehouseDevice
 		protected override void ConfigureApplicationContainer(TinyIoCContainer container)
 		{
 			container.Register<IWarehouseService>(new FakeWarehouseService());
+			container.Register<IInventoryService>(new FakeInventoryService());
+			container.Register<IOrderRepository>(new FakeOrderRepository());
 			base.ConfigureApplicationContainer(container);
 		}
 	}

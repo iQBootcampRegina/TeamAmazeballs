@@ -71,13 +71,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Modules\OrdersModule.cs" />
     <Compile Include="Modules\WarehouseModule.cs" />
     <Compile Include="IOrderRepository.cs" />
-    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\SubOrder.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Modules\OrderModule.cs" />
+    <Compile Include="Modules\SubOrderModule.cs" />
     <Compile Include="NancyBootstrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IInventoryService.cs" />
     <Compile Include="Services\IWarehouseService.cs" />
   </ItemGroup>
   <ItemGroup>

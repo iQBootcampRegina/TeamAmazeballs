@@ -5,10 +5,12 @@ using System.Web;
 
 namespace TAB.WarehouseDevice.Models
 {
-	public class Order
+	public class SubOrder
 	{
 		public int Id { get; set; }
-		public SubOrder[] SubOrders { get; set; }
+		public int OrderId { get; set; }
+		public int WarehouseId { get; set; }
+		public Product[] Items { get; set; }
 		public bool Shipped { get; set; }
 	}
 }
